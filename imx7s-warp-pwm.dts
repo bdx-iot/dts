@@ -1,0 +1,21 @@
+#include "imx7s-warp.dts"
+
+&pwm3 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_pwm3>;
+	status = "okay";
+};
+
+
+&iomuxc {
+	pinctrl-names = "default";
+	imx7s-warp {
+		
+		pinctrl_pwm3: pwm3grp {
+			fsl,pins = <
+				MX7D_PAD_ENET1_RGMII_TD0__PWM3_OUT	0x79
+			>;
+		};
+	};
+};
+
