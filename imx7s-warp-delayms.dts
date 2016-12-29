@@ -38,12 +38,6 @@
 			initial-state = <0>;
 		};
 		
-		out_MIKROBUS_CS {
-			gpios = <&gpio4 23 GPIO_ACTIVE_HIGH>;
-			output;
-			initial-state = <0>;
-		};
-		
 		out_MIKROBUS_RST {
 			gpios = <&gpio7 6 GPIO_ACTIVE_HIGH>;
 			output;
@@ -86,7 +80,6 @@
 		pinctrl_gpioexporter_mikrobus: gpioexportergrp {
 			fsl,pins = <
 				MX7D_PAD_ENET1_RGMII_TD1__GPIO7_IO7	0x14	/* INT */
-				MX7D_PAD_ECSPI2_SS0__GPIO4_IO23	   	0x14 	/* CS */
 				MX7D_PAD_ENET1_RGMII_TD0__GPIO7_IO6	0x14 	/* RST */
 				MX7D_PAD_GPIO1_IO08__GPIO1_IO8		0x14	/* SCL */
 				MX7D_PAD_GPIO1_IO09__GPIO1_IO9		0x14	/* SDA */
