@@ -15,14 +15,14 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <&pinctrl_gpioexporter_mikrobus>;
 		
-		out_MIKROBUS_RST {
-			gpios = <&gpio7 6 GPIO_ACTIVE_HIGH>;
+		out_MIKROBUS_INT {
+			gpios = <&gpio7 7 GPIO_ACTIVE_HIGH>;
 			output;
 			initial-state = <0>;
 		};
 		
-		out_MIKROBUS_SCL {
-			gpios = <&gpio1 8 GPIO_ACTIVE_HIGH>;
+		out_MIKROBUS_RST {
+			gpios = <&gpio7 6 GPIO_ACTIVE_HIGH>;
 			output;
 			initial-state = <0>;
 		};
@@ -47,31 +47,21 @@
 	};
 };
 
-&ecspi2 {
 
-	fsl,spi-num-chipselects = <2>;
-	cs-gpios = <&gpio4 23 GPIO_ACTIVE_LOW>,
-	 	   <&gpio7 7 GPIO_ACTIVE_LOW>;
+&ecspi2 {
+	fsl,spi-num-chipselects = <1>;
+	cs-gpios = <&gpio4 23 GPIO_ACTIVE_LOW>;
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_ecspi2>;
 	status = "okay";		
 		
-	dpot: ad5231@0 {
-		compatible = "adi,ad5231";
+	dpot: ad5263@0 {
+		compatible = "adi,ad5263";
 		#io-channel-cells = <1>;	
 		#address-cells = <1>;
 		#size-cells = <0>;		
 		reg = <0>;
-		spi-max-frequency = <5000000>;
-	};
-	
-	adc: mcp3204@1 {
-		compatible = "mcp3204";
-		#io-channel-cells = <1>;	
-		#address-cells = <1>;
-		#size-cells = <0>;		
-		reg = <1>;
-		spi-max-frequency = <2000000>;
+		spi-max-frequency = <25000000>;
 	};
 };
 
@@ -85,8 +75,7 @@
 				MX7D_PAD_ECSPI2_MISO__ECSPI2_MISO          0x00000014
 				MX7D_PAD_ECSPI2_MOSI__ECSPI2_MOSI          0x00000014
 				MX7D_PAD_ECSPI2_SCLK__ECSPI2_SCLK          0x00000014
-				MX7D_PAD_ECSPI2_SS0__ECSPI2_SS0            0x00000014	/* CS1 */
-				MX7D_PAD_ENET1_RGMII_TD1__GPIO7_IO7	   0x00000014	/* CS2 : INT */
+				MX7D_PAD_ECSPI2_SS0__ECSPI2_SS0            0x00000014
 			>;
 		};
 		
@@ -98,6 +87,7 @@
 		
 		pinctrl_gpioexporter_mikrobus: gpioexportergrp {
 			fsl,pins = <
+				MX7D_PAD_ENET1_RGMII_TD1__GPIO7_IO7	0x14	/* INT */
 				MX7D_PAD_ENET1_RGMII_TD0__GPIO7_IO6	0x14 	/* RST */
 				MX7D_PAD_GPIO1_IO08__GPIO1_IO8		0x14	/* SCL */
 				MX7D_PAD_GPIO1_IO09__GPIO1_IO9		0x14	/* SDA */

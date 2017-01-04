@@ -56,22 +56,18 @@
 	pinctrl-0 = <&pinctrl_ecspi2>;
 	status = "okay";		
 		
-	dpot: ad5231@0 {
-		compatible = "adi,ad5231";
-		#io-channel-cells = <1>;	
-		#address-cells = <1>;
-		#size-cells = <0>;		
+	delay1: ds1023@0 {
+		compatible = "spidev";
 		reg = <0>;
-		spi-max-frequency = <5000000>;
+		spi-max-frequency = <10000000>;
+		spi-cs-high;
 	};
 	
-	adc: mcp3204@1 {
-		compatible = "mcp3204";
-		#io-channel-cells = <1>;	
-		#address-cells = <1>;
-		#size-cells = <0>;		
+	delay2: ds1023@1 {
+		compatible = "spidev";
 		reg = <1>;
-		spi-max-frequency = <2000000>;
+		spi-max-frequency = <10000000>;
+		spi-cs-high;
 	};
 };
 
