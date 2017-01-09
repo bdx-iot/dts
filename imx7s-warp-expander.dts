@@ -1,0 +1,101 @@
+#include "imx7s-warp.dts"
+
+/ {
+		
+	gpio_exporter: gpio-exporter {
+		compatible = "linux,gpio-exporter";	
+		
+		in_PA_0 {
+ 			gpios = <&expander 0 0>;
+ 		};
+ 		
+ 		in_PA_1 {
+ 			gpios = <&expander 1 0>;
+ 		};
+ 		
+ 		in_PA_2 {
+ 			gpios = <&expander 2 0>;
+ 		};
+ 		
+ 		in_PA_3 {
+ 			gpios = <&expander 3 0>;
+ 		};
+ 		
+ 		in_PA_4 {
+			gpios = <&expander 4 0>;
+		};
+		
+		in_PA_5 {
+			gpios = <&expander 5 0>;
+		};
+		
+		in_PA_6 {
+			gpios = <&expander 6 0>;
+		};
+		
+		in_PA_7 {
+			gpios = <&expander 7 0>;
+		};
+		
+		/* PB */
+		
+		out_PB_0 {
+ 			gpios = <&expander 8 GPIO_ACTIVE_HIGH>;
+ 			output;
+			initial-state = <0>;
+ 		};
+ 		
+ 		out_PB_1 {
+ 			gpios = <&expander 9 GPIO_ACTIVE_HIGH>;
+ 			output;
+			initial-state = <0>;
+ 		};
+ 		
+ 		out_PB_2 {
+ 			gpios = <&expander 10 GPIO_ACTIVE_HIGH>;
+ 			output;
+			initial-state = <0>;
+ 		};
+ 		
+ 		out_PB_3 {
+ 			gpios = <&expander 11 GPIO_ACTIVE_HIGH>;
+ 			output;
+			initial-state = <0>;
+ 		};
+ 		
+ 		out_PB_4 {
+			gpios = <&expander 12 GPIO_ACTIVE_HIGH>;
+			output;
+			initial-state = <0>;
+		};
+		
+		out_PB_5 {
+			gpios = <&expander 13 GPIO_ACTIVE_HIGH>;
+			output;
+			initial-state = <0>;
+		};
+		
+		out_PB_6 {
+			gpios = <&expander 14 GPIO_ACTIVE_HIGH>;
+			output;
+			initial-state = <0>;
+		};
+		
+		out_PB_7 {
+			gpios = <&expander 15 GPIO_ACTIVE_HIGH>;
+			output;
+			initial-state = <0>;
+		};
+	};
+};
+
+&i2c3 {
+	expander: expander@20 {
+		compatible = "microchip,mcp23017";
+		gpio-controller;
+        	#gpio-cells = <2>;
+		reg = <0x20>;
+	};
+};
+
+
