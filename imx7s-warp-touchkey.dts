@@ -1,0 +1,37 @@
+#include "imx7s-warp.dts"
+
+/ {
+	gpio_exporter: gpio-exporter {
+		compatible = "linux,gpio-exporter";	
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_gpioexporter_touchkey>;
+	
+		in_A {
+			gpios = <&gpio7 6 0>;
+		};
+		
+		in_C {
+			gpios = <&gpio7 8 0>;
+		};
+		
+		in_D {
+			gpios = <&gpio7 7 0>;
+		};
+		
+	};
+};
+
+&iomuxc {
+	pinctrl-names = "default";
+	imx7s-warp {
+		
+		pinctrl_gpioexporter_touchkey: gpioexportergrp {
+			fsl,pins = <
+				MX7D_PAD_ENET1_RGMII_TD0__GPIO7_IO6	0x14	/* A */
+				MX7D_PAD_ENET1_RGMII_TD2__GPIO7_IO8	0x14	/* C */
+				MX7D_PAD_ENET1_RGMII_TD2__GPIO7_IO7	0x14	/* D */
+			>;
+		};
+	};
+};
+
