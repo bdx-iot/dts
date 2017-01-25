@@ -25,7 +25,7 @@
 		pinctrl_gpioexporter_touch: gpioexportergrp {
 			fsl,pins = <
 				MX7D_PAD_ENET1_RGMII_TD2__GPIO7_IO8	0x14	/* TOUCH */
-				MX7D_PAD_ENET1_RGMII_TD1__GPIO7_IO7	0x14	/* MOTOR */
+				MX7D_PAD_ENET1_RGMII_TD1__GPIO7_IO7	0x15	/* MOTOR */
 			>;
 		};
 	};
